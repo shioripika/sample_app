@@ -14,9 +14,9 @@ class UsersActivationTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', user_path(@user_not_activated), count: 0
   end  
   
-  #/users/:id で有効でないユーザーを表示しようとしたときに、/ にリダイレクトされること
+  #/users/:id で有効でないユーザーを表示しようとしたときに、ログインにリダイレクトされること
   test "show user who is not activated should redirect to root" do
     get user_path(@user_not_activated)
-    assert_redirected_to root_url
+    assert_redirected_to login_url
   end
 end
